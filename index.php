@@ -57,10 +57,10 @@
 		</section>
 		  <!-- Search bar -->
   <div class="search-bar">
-    <form action="search.php" method="GET">
-      <input type="text" name="search" placeholder="Search users...">
-      <button type="submit" class="button">Search</button>
-    </form>
+	 <form action="search.php" method="GET">
+		<input type="text" name="search" placeholder="Search users...">
+		<button type="submit" class="button">Search</button>
+	 </form>
   </div>
 
 
@@ -81,9 +81,9 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 
 // Check connection
 if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}else{
-	echo 'connection established'
+	die("Connection failed: " . mysqli_connect_error());
+} else {
+	echo 'connection established';
 }
 
 // Fetch user data from the database
@@ -91,19 +91,19 @@ $query = "SELECT * FROM users";
 $result = mysqli_query($conn, $query);
 
 if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        echo '<div class="card-outer">';
-        echo '<h3>Full Name: ' . $row['full_name'] . '</h3>';
-        echo '<p>Phone Number: ' . $row['phone_number'] . '</p>';
-        echo '<p>Email Address: ' . $row['email_address'] . '</p>';
+	while ($row = mysqli_fetch_assoc($result)) {
+		echo '<div class="card-outer">';
+		echo '<h3>Full Name: ' . $row['full_name'] . '</h3>';
+		echo '<p>Phone Number: ' . $row['phone_number'] . '</p>';
+		echo '<p>Email Address: ' . $row['email_address'] . '</p>';
 
-        echo '<button class="button" onclick="deleteUser(' . $row['id'] . ')">Delete User</button>';
-        echo '<button class="button" onclick="updateUser(' . $row['id'] . ')">Update User</button>';
+		echo '<button class="button" onclick="deleteUser(' . $row['id'] . ')">Delete User</button>';
+		echo '<button class="button" onclick="updateUser(' . $row['id'] . ')">Update User</button>';
 
-        echo '</div>';
-    }
+		echo '</div>';
+	}
 } else {
-    echo 'No user found.';
+	echo 'No user found.';
 }
 
 // Close the database connection
